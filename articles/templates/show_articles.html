@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="/static/js/jquery-2.1.3.js"></script>
+    <script type="application/javascript" src="/static/scripts/login.js"></script>
+    <script type="application/javascript" src="/static/scripts/articles.js"></script>
+</head>
+<body>
+    <div id="bar">
+        {% include "login_bar.html" with user=user %}
+    </div>
+    <a href="/articles/create">new article</a>
+    {% for article in articles %}
+        <div class="article">
+            <a href="/articles/{{ article.id }}/">
+                <h1>{{ article.article_name }}</h1>
+            </a>
+            <p class="article-id">id: {{ article.id }}</p>
+            <p>Author: {{ article.author }}</p>
+            <p>{{ article.article_text }}</p>
+            {% if article.author == user %}
+                <p>
+                <a href="/articles/{{ article.id }}/change/">Change</a>
+                <input class="article-delete" type="button" value="delete" article_id="{{ article.id }}">
+                </p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+<div id="login_bar" xmlns="http://www.w3.org/1999/html">
+    {{ user }}
+    {% if user.is_authenticated %}
+        <p><a id="user">{{ user.username }}</a>
+        <button id="logout-btn">log out</button>
+        </p>
+    {% else %}
+        <p><button id="register">register</button>
+        <button id="login">log in</button></p>
+        <div id="register-form">
+            <p>Username: <input type="text" name="username"></p>
+            <p>First name: <input type="text" name="first_name"></p>
+            <p>Second name: <input type="text" name="second_name"></p>
+            <p>Email: <input type="email" name="email"></p>
+            <p>Password: <input type="password" name="password"></p>
+            <p>Repeat: <input type="password"></p>
+            <input id="register-btn" type="button" value="Register">
+        </div>
+        <div id="login-form">
+            <p>Username: <input type="text" name="username"></p>
+            <p>Password: <input type="password" name="password"></p>
+            <input id="login-btn" type="button" value="Log in">
+        </div>
+    {% endif %}
+</div>
