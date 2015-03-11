@@ -11,18 +11,15 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             url: "/articles/save/",
-            dataType: "text",
+            dataType: "html",
             data: {data: JSON.stringify(fields)},
             success: function(text){
-                if(html == 'success'){
-                    alert('success')
-                }else{
-                    alert('Wrong')
-                }
+                window.location
             }
                })
     });
     $('.article-delete').on("click",function(){
+        article_block = $(this).parents('.article');
         fields = {
             article_id: $(this).attr('article_id')//$(this).prevAll('.article-id:first').text()
         };
@@ -33,7 +30,7 @@ $(document).ready(function(){
             data: {data: JSON.stringify(fields)},
             success: function(text){
                 if(text == 'success'){
-                    alert('success')
+                   article_block.hide();
                 }else{
                     alert('Wrong')
                 }

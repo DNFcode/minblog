@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from models import Article
 from django.views.decorators.csrf import csrf_exempt
@@ -32,7 +32,7 @@ def article_save(request):
                           article_text = data['article_text'],
                           article_name = data['article_name'])
     article.save()
-    return HttpResponse('success')
+    return HttpResponseRedirect('/articles/all/')
 
 
 @csrf_exempt

@@ -1,0 +1,54 @@
+#register-form{
+    display: none;
+    padding: 5px;
+    border-radius: 0px 0px 10px 10px;
+}
+#login-form{
+    display: none;
+    padding: 5px;
+    border-radius: 0px 0px 10px 10px;
+}
+#bar{
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    width: 20%;
+    min-width: 290px;
+}
+#new-article{
+    position: relative;
+    left: 80%;
+}
+#articles{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+#register-btn{
+    margin-top: 7px;
+}
+#login-btn{
+    margin-top: 7px;
+}
+#minimal-head{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+@font-face {
+    font-family: "Walkway";
+    src: url(/static/fonts/walkway.ttf) format("truetype");
+}
+#minimal{
+    font-family: Walkway;
+    font-size: 60pt;
+    margin-bottom: 0%;
+}
+#blog{
+    font-family: Walkway;
+    font-size: 50pt;
+    margin-left: 200px;
+    margin-top: 0%;
+}
+#head-line{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}

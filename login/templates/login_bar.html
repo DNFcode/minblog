@@ -1,25 +1,94 @@
 <div id="login_bar" xmlns="http://www.w3.org/1999/html">
-    {{ user }}
     {% if user.is_authenticated %}
         <p><a id="user">{{ user.username }}</a>
-        <button id="logout-btn">log out</button>
+            <form action="/user/logout/" method="post">
+                <button id="logout-btn">log out</button>
+            </form>
         </p>
     {% else %}
-        <p><button id="register">register</button>
-        <button id="login">log in</button></p>
-        <div id="register-form">
-            <p>Username: <input type="text" name="username"></p>
-            <p>First name: <input type="text" name="first_name"></p>
-            <p>Second name: <input type="text" name="second_name"></p>
-            <p>Email: <input type="email" name="email"></p>
-            <p>Password: <input type="password" name="password"></p>
-            <p>Repeat: <input type="password"></p>
-            <input id="register-btn" type="button" value="Register">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <p style="margin: 0;"><button id="register" class="btn btn-default">register</button>
+        <button id="login" class="btn btn-default">log in</button></p>
         </div>
-        <div id="login-form">
-            <p>Username: <input type="text" name="username"></p>
-            <p>Password: <input type="password" name="password"></p>
-            <input id="login-btn" type="button" value="Log in">
+        <form action="/user/register/" method="post" id="register-form">
+            <div class="panel-body">
+            <table>
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                    <td>
+                        <input type="text" name="username">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        First name:
+                    </td>
+                    <td>
+                        <input type="text" name="first_name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last name:
+                    </td>
+                    <td>
+                        <input type="text" name="second_name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Email:
+                    </td>
+                    <td>
+                        <input type="email" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        <input type="password" name="password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Repeat:
+                    </td>
+                    <td>
+                        <input type="password">
+                    </td>
+                </tr>
+            </table>
+        <input id="register-btn" class="btn btn-primary" type="submit" value="Register">
+        </div>
+        </form>
+        <form action="/user/login/" method="post" id="login-form">
+            <div class="panel-body">
+            <table>
+                <tr>
+                    <td>
+                        Username:
+                    </td>
+                    <td>
+                        <input type="text" name="username">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Password:
+                    </td>
+                    <td>
+                        <input type="password" name="password">
+                    </td>
+                </tr>
+            </table>
+            <input id="login-btn" class="btn btn-primary" type="submit" value="Log in">
+            </div>
+        </form>
         </div>
     {% endif %}
 </div>

@@ -9,7 +9,7 @@ import json
 
 @csrf_exempt
 def login_user(request):
-    data = json.loads(request.POST.dict()['data'])
+    data = request.POST.dict()
     username = data['username']
     password = data['password']
     user = authenticate(username=username, password=password)
@@ -17,7 +17,7 @@ def login_user(request):
         if user.is_active:
             login(request, user)
             print user.is_authenticated()
-            return HttpResponseRedirect('/articles')
+            return HttpResponseRedirect('/articles/all/')
         else:
             HttpResponse('Not active')
     else:
@@ -27,12 +27,12 @@ def login_user(request):
 @csrf_exempt
 def logout_user(request):
     logout(request)
-    return HttpResponseRedirect('/articles')
+    return HttpResponseRedirect('/articles/all/')
 
 
 @csrf_exempt
 def register_user(request):
-    data = json.loads(request.POST.dict()['data'])
+    data = request.POST.dict()
     try:
         user = User.objects.get(username=data['username'])
         return HttpResponse('WRONG')

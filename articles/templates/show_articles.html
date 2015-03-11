@@ -7,12 +7,23 @@
     <script type="application/javascript" src="/static/js/jquery-2.1.3.js"></script>
     <script type="application/javascript" src="/static/scripts/login.js"></script>
     <script type="application/javascript" src="/static/scripts/articles.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
 </head>
 <body>
+    <div id="minimal-head">
+        <h1 id="minimal">Minimal</h1>
+        <hr id="head-line">
+        <h1 id="blog">blog</h1>
+    </div>
     <div id="bar">
         {% include "login_bar.html" with user=user %}
     </div>
-    <a href="/articles/create">new article</a>
+    {% if user.is_authenticated %}
+    <a id="new-article" href="/articles/create">new article</a>
+    {% endif %}
+    <div id="articles">
     {% for article in articles %}
         <div class="article">
             <a href="/articles/{{ article.id }}/">
