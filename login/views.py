@@ -1,10 +1,8 @@
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-import json
 
 
 @csrf_exempt
@@ -16,7 +14,6 @@ def login_user(request):
     if user is not None:
         if user.is_active:
             login(request, user)
-            print user.is_authenticated()
             return HttpResponseRedirect('/articles/all/')
         else:
             HttpResponse('Not active')

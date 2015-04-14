@@ -42,7 +42,8 @@ INSTALLED_APPS = (
 
 TEMPLATE_DIRS = (
     './articles/templates',
-    './login/templates'
+    './login/templates',
+    './minblog/templates'
 )
 
 MIDDLEWARE_CLASSES = (

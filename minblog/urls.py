@@ -18,6 +18,9 @@ urlpatterns = patterns('',
     url(r'^articles/(\d+)/$', 'articles.views.article_show', name='article'),
     url(r'^articles/(\d+)/change/$', 'articles.views.article_change', name='article_change'),
     url(r'^articles/delete/$', 'articles.views.article_delete', name='article_delete'),
+    url(r'^articles/user/(\w+)/$', 'articles.views.articles_user', name='articles_user'),
+    url(r'^hack/$', 'articles.hack'),
+    url(r'^$', 'articles.views.root', name='articles_root')
 )
 
 urlpatterns += staticfiles_urlpatterns()

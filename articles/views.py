@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.models import User
 from models import Article
 from django.views.decorators.csrf import csrf_exempt
 import json
+import pexpect
 
 
 @csrf_exempt
@@ -65,3 +66,21 @@ def article_delete(request):
         return HttpResponse('success')
     except(Exception):
         return HttpResponse('bad')
+
+
+def articles_user(request, name):
+    try:
+        user = User.objects.get(username=name)
+        articles = Article.objects.filter(author=user)
+        return render(request, 'profile_articles.html', {
+            'articles': articles
+        })
+    except(Exception):
+        raise Http404("User does not exist")
+
+
+def hack(request):
+    p = pexpect.spawn()
+
+def root(request):
+    return HttpResponseRedirect('/articles/all/')

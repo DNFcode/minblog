@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}{{ block.super }}
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="application/javascript" src="/static/js/jquery-2.1.3.js"></script>
+    <script type="application/javascript" src="/static/scripts/login.js"></script>
+    <script type="application/javascript" src="/static/scripts/articles.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+{% endblock %}
+{% block content %}
+    <div id="bar">
+        {% include "login_bar.html" with user=user %}
+    </div>
+{% endblock %}

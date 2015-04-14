@@ -1,7 +1,4 @@
 {% extends "base_articles.html" %}
-{% block title %}
-    Minblog
-{% endblock %}
 {% block content %}{{ block.super }}
     <div id="minimal-head">
         <h1 id="minimal">Minimal</h1>
@@ -12,6 +9,7 @@
     <a id="new-article" href="/articles/create">new article</a>
     {% endif %}
     <div id="articles">
+    <h2>Here are some {{ user.username }} articles...</h2>
     {% for article in articles %}
         <div class="article">
             <a href="/articles/{{ article.id }}/">
@@ -19,6 +17,12 @@
             </a>
             <p>Author: {{ article.author }}</p>
             <p>{{ article.article_text }}</p>
+            {% if article.author == user %}
+                <p>
+                <a href="/articles/{{ article.id }}/change/">Change</a>
+                <input class="article-delete btn btn-danger" type="button" value="delete" article_id="{{ article.id }}">
+                </p>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}

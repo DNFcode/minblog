@@ -16,7 +16,8 @@ $(document).ready(function(){
             success: function(text){
                 window.location
             }
-               })
+       })
+        jkmhg;
     });
     $('.article-delete').on("click",function(){
         article_block = $(this).parents('.article');

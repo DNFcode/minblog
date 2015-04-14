@@ -1,10 +1,13 @@
 <div id="login_bar" xmlns="http://www.w3.org/1999/html">
     {% if user.is_authenticated %}
-        <p><a id="user">{{ user.username }}</a>
-            <form action="/user/logout/" method="post">
-                <button id="logout-btn">log out</button>
-            </form>
-        </p>
+    <form action="/user/logout/" method="post">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p style="margin: 0%"><a href="/articles/user/{{ user.username }}" id="user">{{ user.username }}</a>
+                <button id="logout-btn" class="btn btn-default">log out</button></p>
+            </div>
+        </div>
+    </form>
     {% else %}
         <div class="panel panel-default">
         <div class="panel-heading">

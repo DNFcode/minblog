@@ -9,7 +9,7 @@
     border-radius: 0px 0px 10px 10px;
 }
 #bar{
-    position: absolute;
+    position: fixed;
     right: 0%;
     top: 0%;
     width: 20%;
@@ -39,16 +39,26 @@
 }
 #minimal{
     font-family: Walkway;
-    font-size: 60pt;
+    font-size: 50pt;
     margin-bottom: 0%;
 }
 #blog{
     font-family: Walkway;
     font-size: 50pt;
-    margin-left: 200px;
+    margin-left: 240px;
     margin-top: 0%;
 }
 #head-line{
     margin-top: 1px;
     margin-bottom: 1px;
+}
+.article-header{
+    text-align: center;
+}
+.article{
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 92%;
+    padding: 2%;
+    margin: 2%;
 }
