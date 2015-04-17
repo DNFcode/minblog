@@ -1,0 +1,85 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <span class="navbar-brand">Python blog</span>
+        </div>
+        {% if user.is_authenticated %}
+        <ul class="nav navbar-nav navbar-left">
+            <li {% if request.path == '/articles/all/'%} class="active" {% endif %}>
+                <a href="/articles/all/">All articles</a></li>
+            <li {% if request.path|slice:":15" == '/articles/user/'%} class="active" {% endif %}>
+                    <a href="/articles/user/{{ user.username }}">My articles</a></li>
+            <li {% if request.path == '/articles/create/'%} class="active" {% endif %}>
+                <a href="/articles/create/">New article</a></li>
+        </ul>
+        <form class="nav navbar-right navbar-form" action="/user/logout/" method="post">
+            <button type="submit" class="btn btn-primary">Sign out</button>
+        </form>
+        <p class="nav navbar-text navbar-right">You logged in as {{ user.username }}</p>
+        {% else %}
+        <form class="navbar-right navbar-form" action="/user/login/" method="post">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Login" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+            <span>or</span>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Register
+            </button>
+        </form>
+        {% endif %}
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Register</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form id="register-form" action="/user/register/" method="post">
+                        <div class="form-group">
+                            <input type="text" id="username-reg" name="username" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email-reg" name="email" placeholder="Email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password-reg" name="password" placeholder="Password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password-repeat" placeholder="Repeat password" class="form-control">
+                        </div>
+                    </form>
+                    <!--Errors messages-->
+                    <div class="collapse" id="wrongPass">
+                        <div class="alert alert-danger well-sm">
+                            Passwords are not equal.
+                        </div>
+                    </div>
+                    <div class="collapse" id="wrongUsername">
+                        <div class="alert alert-danger well-sm">
+                            Wrong username. Username must be at least 3 characters long.
+                        </div>
+                    </div>
+                    <div class="collapse" id="wrongEmail">
+                        <div class="alert alert-danger well-sm">
+                            Wrong email.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="register-btn">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

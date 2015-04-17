@@ -19,7 +19,10 @@ urlpatterns = patterns('',
     url(r'^articles/(\d+)/change/$', 'articles.views.article_change', name='article_change'),
     url(r'^articles/delete/$', 'articles.views.article_delete', name='article_delete'),
     url(r'^articles/user/(\w+)/$', 'articles.views.articles_user', name='articles_user'),
-    url(r'^hack/$', 'articles.hack'),
+    url(r'^comments/(\d+)/$', 'comments.views.comments_show', name='comments_show'),
+    url(r'^comments/save/$', 'comments.views.comment_save', name='comment_save'),
+    url(r'^comments/delete/(\d+)/$', 'comments.views.comment_delete', name='comment_delete'),
+    url(r'^comments/update/$', 'comments.views.comments_update', name='comments_update'),
     url(r'^$', 'articles.views.root', name='articles_root')
 )
 

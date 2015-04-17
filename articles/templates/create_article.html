@@ -1,7 +1,15 @@
 {% extends "base_articles.html" %}
 {% block content %}{{ block.super }}
-    <p id="article-id">{{ article.id }}</p>
-    <p>Title: <input id="article-name" type="text" size="100" value="{{ article.article_name }}"></p>
-    <p>Text: <textarea id="article-text" rows="20" cols="100">{{ article.article_text }}</textarea></p>
-    <input id="article-save" type="button" value="save">
+    {% include "nav_bar.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <p id="article-id">{{ article.id }}</p>
+                <p>Title: <input id="article-name" type="text" size="100" value="{{ article.article_name }}"></p>
+                <p>Text: <textarea id="article-text" rows="20" cols="100">{{ article.article_text }}</textarea></p>
+                <input id="article-save" type="button" value="save">
+            </div>
+        </div>
+    </div>
 {% endblock %}

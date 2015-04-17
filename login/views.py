@@ -41,9 +41,7 @@ def register_user(request):
     except(Exception):
         pass
     user = User(username=data['username'],
-                email=data['email'],
-                first_name=data['first_name'],
-                last_name=data['second_name'])
+                email=data['email'])
     user.set_password(data['password'])
     user.save()
     return login_user(request)

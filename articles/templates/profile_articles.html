@@ -1,28 +1,27 @@
 {% extends "base_articles.html" %}
 {% block content %}{{ block.super }}
-    <div id="minimal-head">
-        <h1 id="minimal">Minimal</h1>
-        <hr id="head-line">
-        <h1 id="blog">blog</h1>
-    </div>
-    {% if user.is_authenticated %}
-    <a id="new-article" href="/articles/create">new article</a>
-    {% endif %}
-    <div id="articles">
-    <h2>Here are some {{ user.username }} articles...</h2>
-    {% for article in articles %}
-        <div class="article">
-            <a href="/articles/{{ article.id }}/">
-                <h1 class="article-header">{{ article.article_name }}</h1>
-            </a>
-            <p>Author: {{ article.author }}</p>
-            <p>{{ article.article_text }}</p>
-            {% if article.author == user %}
-                <p>
-                <a href="/articles/{{ article.id }}/change/">Change</a>
-                <input class="article-delete btn btn-danger" type="button" value="delete" article_id="{{ article.id }}">
-                </p>
-            {% endif %}
+    {% include "nav_bar.html" %}
+<div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+        <div id="articles" class="col-md-10">
+        <h2>Here are some {{ user.username }} articles...</h2>
+        {% for article in articles %}
+            <div class="article">
+                <a href="/articles/{{ article.id }}/">
+                    <h1 class="article-header">{{ article.article_name }}</h1>
+                </a>
+                <p>Author: {{ article.author }}</p>
+                <p>{{ article.article_text }}</p>
+                {% if article.author == user %}
+                    <p>
+                    <a href="/articles/{{ article.id }}/change/">Change</a>
+                    <input class="article-delete btn btn-danger" type="button" value="delete" article_id="{{ article.id }}">
+                    </p>
+                {% endif %}
+            </div>
+        {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+</div>
 {% endblock %}

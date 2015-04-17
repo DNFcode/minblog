@@ -1,0 +1,11 @@
+{% for comment in comments %}
+<div class="comment" commentid="{{ comment.id }}">
+    <span class="comment-author">{{ comment.author }}</span>
+    <span class="comment-time">{{ comment.time }}</span>
+    <div class="comment-text">{{ comment.text }}</div>
+    {% if user == comment.commentUser %}
+        <button class="comment-delete btn btn-danger btn-sm">delete</button>
+    {% endif %}
+<hr/>
+</div>
+{% endfor %}

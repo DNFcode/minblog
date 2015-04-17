@@ -3,22 +3,22 @@
     Minblog
 {% endblock %}
 {% block content %}{{ block.super }}
-    <div id="minimal-head">
-        <h1 id="minimal">Minimal</h1>
-        <hr id="head-line">
-        <h1 id="blog">blog</h1>
-    </div>
-    {% if user.is_authenticated %}
-    <a id="new-article" href="/articles/create">new article</a>
-    {% endif %}
-    <div id="articles">
-    {% for article in articles %}
-        <div class="article">
-            <a href="/articles/{{ article.id }}/">
-                <h1 class="article-header">{{ article.article_name }}</h1>
-            </a>
-            <p>Author: {{ article.author }}</p>
-            <p>{{ article.article_text }}</p>
+    {% include "nav_bar.html" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div id="articles" class="col-md-6">
+            {% for article in articles %}
+                <div class="article" articleID="{{ article.id }}">
+                    <a href="/articles/{{ article.id }}/">
+                        <h1 class="article-header">{{ article.article_name }}</h1>
+                    </a>
+                    <p>Author: {{ article.author }}</p>
+                    <p>{{ article.article_text | safe }}</p>
+                    {% include "comments_area.html" %}
+                </div>
+            {% endfor %}
+            </div>
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}

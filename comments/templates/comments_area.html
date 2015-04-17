@@ -1,0 +1,12 @@
+<a class="comment-hider" loaded="false">
+    View comments<span class="glyphicon glyphicon-triangle-bottom"></span>
+</a>
+<blockquote class="comments-block" id="collapseExample">
+    <div class="comments"></div>
+    {% if user.is_authenticated %}
+    <div class="comment-new">
+        <textarea class="comment-new-area" placeholder="leave your comment here..."></textarea>
+        <button class="save-comment btn btn-default">Comment</button>
+    </div>
+    {% endif %}
+</blockquote>

@@ -1,0 +1,26 @@
+.comments-block{
+    display: none;
+}
+.comment-author{
+    color: lightslategray;
+    font-size: 12pt;
+}
+.comment-time{
+    float: right;
+    color: lightslategray;
+    font-size: 10pt;
+}
+.comment-text{
+    background-color: #F7F7F7;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 11pt;
+}
+.comment-new-area{
+    width: 100%;
+    resize: none;
+    font-size: 11pt;
+}
+.comment-delete{
+    padding: 0px 5px;
+}
