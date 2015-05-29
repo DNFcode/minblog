@@ -22,5 +22,8 @@ class Migration(migrations.Migration):
                 ('article', models.ForeignKey(to='articles.Article')),
                 ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
+            options={
+            },
+            bases=(models.Model,),
         ),
     ]
