@@ -71,7 +71,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ifmo',
 		'USER': 'root',
-		'PASSWORD': '12341234'
+		'PASSWORD': 'tutu123'
     }
 }
 
