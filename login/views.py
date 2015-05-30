@@ -16,9 +16,9 @@ def login_user(request):
             login(request, user)
             return HttpResponseRedirect('/articles/all/')
         else:
-            HttpResponse('Not active')
+            return HttpResponse('Not active')
     else:
-        HttpResponse('Wrong username and password.')
+        return HttpResponse('Wrong username and password.')
 
 
 @csrf_exempt
